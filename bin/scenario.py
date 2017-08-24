@@ -30,7 +30,7 @@ class scenarios:
     self.rnd = pd.melt(self. rnd, id_vars=['index', 'GLOBAL'], var_name = 'map', value_name = 'LOCAL')
     self.rnd = pd.merge(self.sensitivities, self.rnd)
     self.rnd = self.rnd.assign(
-      idio = np.random.randn(self.n_simul * (self.cor_credit.shape[1] - 1)))
+      idio = np.random.randn(self.rnd.shape[0]))
     self.rnd = self.rnd.assign(
       CWI = ((self.rnd['GF'] * self.rnd['GLOBAL']) + (self.rnd['LF'] * self.rnd['LOCAL']) + (self.rnd['IF'] * self.rnd['idio']))) # np.random.randn(self.n_simul * (self.cor_credit.shape[1] - 1))    )
     self.rnd = self.rnd[['equation', 'index', 'CWI']]

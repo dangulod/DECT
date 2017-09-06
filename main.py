@@ -1,6 +1,6 @@
 import sys
 
-new_path = '/Users/n87557/Documents/Metodologia de capital/DECT/bin'
+new_path = '/Users/n87557/Documents/Metodologia de capital/DECT/samples'
 
 if new_path not in sys.path:
     sys.path.append(new_path)

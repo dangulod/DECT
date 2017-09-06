@@ -22,13 +22,13 @@ class scenarios:
     CWI = beta_global * GF + beta_local * LF + beta_idiosyncratic * IF
   """
   
-  def __f(self, x):
-    if (x.split("_")[0] == "SCF"):
-      return x.split("_")[1]
-    else:
-      return x.split("_")[0]
-  
   def __init__(self, cor_credit, sensitivities):
+    
+    def __f(x):
+      if (x.split("_")[0] == "SCF"):
+        return x.split("_")[1]
+      else:
+        return x.split("_")[0]
     
     self.cor_credit = cor_credit
     
@@ -40,7 +40,7 @@ class scenarios:
     
     self.sensitivities = sensitivities.assign(
       IF = list(map(sqrt, round(1 - (sensitivities['GF'] ** 2 + sensitivities['LF'] ** 2),7))), 
-      map = list(map(self.__f, np.array(sensitivities[sensitivities.columns[0]])))
+      map = list(map(__f, np.array(sensitivities[sensitivities.columns[0]])))
     )
   
   def generate(self, n_simul):

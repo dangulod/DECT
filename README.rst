@@ -1,1 +1,1 @@
-DECT - Repository
+**DECT - Repository**
